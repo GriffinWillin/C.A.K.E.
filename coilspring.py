@@ -1,7 +1,7 @@
 from random import choice
 letters = ["a","b","c","d","e","f","g"]
 
-def BROTHER(how):
+def Monster(how):
     out = []
     x = 0
     while(x<how):
@@ -9,4 +9,4 @@ def BROTHER(how):
         x+= 1
     return out
 
-print(BROTHER(50))
+print(Monster(50))
