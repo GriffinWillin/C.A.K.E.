@@ -2,3 +2,13 @@ APRL/0004/2024
 - met with guys to make repo
 - looked around for materials and discussed design
 - got pipes :D
+
+APRL/0005/2024
+- looked at parts to rent/buy at the component place in the IESB
+    - found stepper motors and motor controllers, going to rent them
+
+APRL/0006/2024
+- did some CAD work on the design
+
+APRL/0007/2024
+- more CAD stuff
