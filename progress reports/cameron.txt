@@ -15,9 +15,8 @@
 
 4.8.24
     - Me and Joe picked up the stepper motors and motor controller from the IESB place
+    - I pulled an all-nighter trying to learn how to use the stepper motors, their controllers, and how to wire them
+    - I came to the conclusion that the Le Potatoes do not output enough voltage to power the amperage of the stepper motors
 
-
-dafdsfadsfasdfasdfadsfasfsad
-
-
-SHREK FARTS LOUDLY IN THE VAST CITY
+4.9.24
+    - We came to the conclusion that we need to integrate battery power into our project
