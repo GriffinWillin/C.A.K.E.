@@ -66,7 +66,7 @@ app = CAKE(window)
 ###################
 
 # # Images
-# slices = PhotoImage(file = os.path.join('Images', 'slices.png'))
+slices = PhotoImage(file = os.path.join('Images', 'slices.png'))
 # plus = PhotoImage(file = os.path.join('Images'))
 # minus = PhotoImage(file = os.path.join('Images'))
 # # num_slices = PhotoImage(file = os.path.join('Images'))
@@ -78,7 +78,7 @@ app = CAKE(window)
 # Labels
 diagram = Label(window, text = "picture here")
 status = Label(window, text = "status")
-num = Label(window, text = "NUMBER OF SLICES")
+num = Label(window, image = slices)
 
 # Buttons
 # b_plus = Button(window, image = plus, command = CAKE.add)
