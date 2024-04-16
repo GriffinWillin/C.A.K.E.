@@ -28,3 +28,10 @@
     - I pulled an all nighter learning why my motor isn't working
     - The motors work now!!! (had to macgyver it with some tin foil)
     - The motor's shaft spins correctly (I think), but we need to learn how to properly program it
+
+4.14.24
+    - I 3D printed the feet for our design
+
+4.15.24
+    - We all got together and used our free printing grams to print all the needed parts for our project
+    - We began working on our prototype slideshow
