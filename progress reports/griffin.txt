@@ -12,3 +12,17 @@ APRL/0006/2024
 
 APRL/0007/2024
 - more CAD stuff
+
+APRL/0013/2024
+- found bolts
+
+APRL/0014/2024
+- printed foot
+- adjusted pipe sizes
+
+APRL/0015/2024
+- printed ring, ring brace, leg mount
+
+APRL/0016/2024
+- worked on presentation
+- tested assembly
