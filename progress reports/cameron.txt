@@ -1,0 +1,30 @@
+4.4.24
+    - meeting held to learn how to use git
+    - we cloned our repo
+    - Looked around ruston for supplies related to our project
+    - secured a pie pan and 3 pvc pipes for possible use in project
+
+4.5.24
+    - looked into available parts in the first floor IESB
+    - talked with worker asking about stepper motors and controllers
+    - got a feel for weights, sizes, and voltages of motors
+
+4.7.24
+    - sketched a rough diagram of our project
+
+
+4.8.24
+    - Me and Joe picked up the stepper motors and motor controller from the IESB place
+    - I pulled an all-nighter trying to learn how to use the stepper motors, their controllers, and how to wire them
+    - I came to the conclusion that the Le Potatoes do not output enough voltage to power the amperage of the stepper motors
+
+4.9.24
+    - We came to the conclusion that we need to integrate battery power into our project
+
+4.12.24
+    - I went to IESB to buy a battery pack
+    - I spent all day researching and asking everyone I knew about how electricity works
+    - I learned about how many volts and amps the stepper motors will need
+    - I pulled an all nighter learning why my motor isn't working
+    - The motors work now!!! (had to macgyver it with some tin foil)
+    - The motor's shaft spins correctly (I think), but we need to learn how to properly program it
