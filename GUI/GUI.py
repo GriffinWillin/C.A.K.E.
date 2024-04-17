@@ -60,13 +60,13 @@ class CAKE(Frame):
     def get_dim(self):
         pass
 
-###################
+##########################################################################
 window = Tk()
 window.title("C.A.K.E")
 app = CAKE(window)
-###################
+##########################################################################
 
-# # Images
+################################# Images #################################
 slices = Image.open((os.path.join('GUI', 'Images', 'slices.png')))
 slices_image = ImageTk.PhotoImage(slices)
 
@@ -96,7 +96,7 @@ diagram = Label(window, text = "picture here")
 status = Label(window, text = "status")
 num = Label(window, image = slices_image)
 
-# Buttons
+################################ Buttons #################################
 b_plus = Button(window, text = "+", command = CAKE.add, font = ('lobster', 45))
 b_minus = Button(window, text = "-", command = CAKE.remove, font = ('lobster', 45))
 b_start = Button(window, image = start_image, command = CAKE.begin)
@@ -110,7 +110,7 @@ b_e_stop = Button(window, image = e_stop_image, command = exit)
 
 ############################# Grid or Pack ###############################
 
-###### GRID ######
+################################## GRID ##################################
 diagram.grid(column = 1, row = 0, sticky = N)
 status.grid(column = 2, row = 2, sticky = N+E)
 num.grid(column = 1, row = 1, sticky = N+E+W)
@@ -121,10 +121,10 @@ b_e_stop.grid(column = 5, row = 4, sticky = S+E)
 
 
 
-##################
+##########################################################################
 
 
-###### PACK ######
+################################## PACK ##################################
 # diagram.pack(side = TOP)
 # status.pack(side = RIGHT)
 # num.pack(side = LEFT)
@@ -135,6 +135,6 @@ b_e_stop.grid(column = 5, row = 4, sticky = S+E)
 # b_e_stop.pack(side = TOP, padx = 100, pady = 50, ipadx = 15, ipady = 40)
 ##########################################################################
 
-######################### MAIN ##############################
+################################## MAIN ##################################
 
 window.mainloop()
