@@ -9,7 +9,7 @@ HEIGHT = 600
 
 class CAKE(Frame):
     def __init__(self, master):
-        super().__init__(master, bg = 'red')
+        super().__init__(master, bg = 'grey')
 
         # A list represented by a string to store all values entered and returned
 		# so that I can interate backwards to remove the last button and limit the characters
