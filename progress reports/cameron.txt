@@ -21,6 +21,9 @@
 4.9.24
     - We came to the conclusion that we need to integrate battery power into our project
 
+4.10.24
+    - Created some example GUI's for potential use
+
 4.12.24
     - I went to IESB to buy a battery pack
     - I spent all day researching and asking everyone I knew about how electricity works
