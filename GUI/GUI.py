@@ -9,7 +9,7 @@ HEIGHT = 600
 
 class CAKE(Frame):
     def __init__(self, master):
-        super().__init__(master, bg = 'grey')
+        super().__init__(master, bg = 'red')
 
         # A list represented by a string to store all values entered and returned
 		# so that I can interate backwards to remove the last button and limit the characters
@@ -67,6 +67,9 @@ app = CAKE(window)
 ##########################################################################
 
 ################################# Images #################################
+diagram = Image.open((os.path.join('GUI', 'Images', 'Ellipse 1.png')))
+diagram_image = ImageTk.PhotoImage(diagram)
+
 slices = Image.open((os.path.join('GUI', 'Images', 'slices.png')))
 slices_image = ImageTk.PhotoImage(slices)
 
@@ -92,7 +95,7 @@ e_stop = Image.open(os.path.join('GUI', 'Images', "Stop.png"))
 e_stop_image = ImageTk.PhotoImage(e_stop)
 
 # Labels
-diagram = Label(window, text = "picture here")
+pie = Label(window, image = diagram_image)
 status = Label(window, text = "status")
 num = Label(window, image = slices_image)
 
@@ -111,7 +114,7 @@ b_e_stop = Button(window, image = e_stop_image, command = exit)
 ############################# Grid or Pack ###############################
 
 ################################## GRID ##################################
-diagram.grid(column = 1, row = 0, sticky = N)
+pie.grid(column = 1, row = 0)
 status.grid(column = 2, row = 2, sticky = N+E)
 num.grid(column = 1, row = 1, sticky = N+E+W)
 b_plus.grid(column = 0, row = 2, sticky = E)
