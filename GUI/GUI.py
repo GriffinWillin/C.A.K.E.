@@ -138,3 +138,4 @@ b_e_stop.grid(column = 4, row = 4, sticky = S+E)
 ######################### MAIN ##############################
 
 window.mainloop()
+#FUCK
