@@ -67,7 +67,7 @@ app = CAKE(window)
 ###################
 
 # # Images
-slices = Image.open((os.path.join('Images', 'slices.png')))
+slices = Image.open((os.path.join('GUI', 'Images', 'slices.png')))
 slices_image = ImageTk.PhotoImage(slices)
 
 # plus = Image.open(os.path.join('Images', 'plus.png'))
@@ -82,13 +82,13 @@ slices_image = ImageTk.PhotoImage(slices)
 # status = Image.open(os.path.join('Images'))
 # status_image = ImageTk.PhotoImage(file = os.path.join('Images'))
 
-start = Image.open(os.path.join('Images', "Start.png"))
+start = Image.open(os.path.join('GUI', 'Images', "Start.png"))
 start_image = ImageTk.PhotoImage(start)
 
 # align = Image.open(os.path.join('Images'))
 # align_image = ImageTk.PhotoImage(file = os.path.join('Images'))
 
-e_stop = Image.open(os.path.join('Images', "Stop.png"))
+e_stop = Image.open(os.path.join('GUI', 'Images', "Stop.png"))
 e_stop_image = ImageTk.PhotoImage(e_stop)
 
 # Labels
@@ -97,8 +97,8 @@ status = Label(window, text = "status")
 num = Label(window, image = slices_image)
 
 # Buttons
-b_plus = Button(window, text = "+", command = CAKE.add, padx = 50, pady = 50)
-b_minus = Button(window, text = "-", command = CAKE.remove)
+b_plus = Button(window, text = "+", command = CAKE.add, font = ('lobster', 45))
+b_minus = Button(window, text = "-", command = CAKE.remove, font = ('lobster', 45))
 b_start = Button(window, image = start_image, command = CAKE.begin)
 # b_align = Button(window, image = align, command = CAKE.get_dim)
 b_e_stop = Button(window, image = e_stop_image, command = exit)
@@ -116,8 +116,8 @@ status.grid(column = 2, row = 2)
 num.grid(column = 1, row = 1, sticky = N+E+W)
 b_plus.grid(column = 0, row = 2, sticky = E)
 b_minus.grid(column = 2, row = 2, sticky = W)
-b_start.grid(column = 4, row = 3, sticky = S+E)
-b_e_stop.grid(column = 4, row = 4, sticky = S+E)
+b_start.grid(column = 5, row = 3, sticky = S+E)
+b_e_stop.grid(column = 5, row = 4, sticky = S+E)
 
 
 
