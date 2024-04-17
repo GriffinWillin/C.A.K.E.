@@ -111,8 +111,8 @@ b_e_stop = Button(window, image = e_stop_image, command = exit)
 ############################# Grid or Pack ###############################
 
 ###### GRID ######
-diagram.grid(column = 1, row = 0)
-status.grid(column = 2, row = 2)
+diagram.grid(column = 1, row = 0, sticky = N)
+status.grid(column = 2, row = 2, sticky = N+E)
 num.grid(column = 1, row = 1, sticky = N+E+W)
 b_plus.grid(column = 0, row = 2, sticky = E)
 b_minus.grid(column = 2, row = 2, sticky = W)
