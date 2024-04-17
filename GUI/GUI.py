@@ -113,7 +113,7 @@ b_e_stop = Button(window, image = e_stop_image, command = exit)
 ###### GRID ######
 diagram.grid(column = 1, row = 0)
 status.grid(column = 2, row = 2)
-num.grid(column = 1, row = 1)
+num.grid(column = 1, row = 1, sticky = N+E+W)
 b_plus.grid(column = 0, row = 2, sticky = E)
 b_minus.grid(column = 2, row = 2, sticky = W)
 b_start.grid(column = 4, row = 3, sticky = S+E)
