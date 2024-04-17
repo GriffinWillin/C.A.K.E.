@@ -2,6 +2,7 @@ Current Objectives:
 
 *   Create usable GUI
         - containing buttons and images
+        - make it appealing and fit the resolution of the pi: "1024x600"
 
 *   Finish all 3d printing
         - rack, pinion, motor mount
