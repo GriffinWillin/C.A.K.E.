@@ -1,0 +1,53 @@
+4.4.24
+    - meeting held to learn how to use git
+    - we cloned our repo
+    - Looked around ruston for supplies related to our project
+    - secured a pie pan and 3 pvc pipes for possible use in project
+
+4.5.24
+    - looked into available parts in the first floor IESB
+    - talked with worker asking about stepper motors and controllers
+    - got a feel for weights, sizes, and voltages of motors
+
+4.7.24
+    - sketched a rough diagram of our project
+
+
+4.8.24
+    - Me and Joe picked up the stepper motors and motor controller from the IESB place
+    - I pulled an all-nighter trying to learn how to use the stepper motors, their controllers, and how to wire them
+    - I came to the conclusion that the Le Potatoes do not output enough voltage to power the amperage of the stepper motors
+
+4.9.24
+    - We came to the conclusion that we need to integrate battery power into our project
+
+4.10.24
+    - Created some example GUI's for potential use
+
+4.12.24
+    - I went to IESB to buy a battery pack
+    - I spent all day researching and asking everyone I knew about how electricity works
+    - I learned about how many volts and amps the stepper motors will need
+    - I pulled an all nighter learning why my motor isn't working
+    - The motors work now!!! (had to macgyver it with some tin foil)
+    - The motor's shaft spins correctly (I think), but we need to learn how to properly program it
+
+4.14.24
+    - I 3D printed the feet for our design
+
+4.15.24
+    - We all got together and used our free printing grams to print all the needed parts for our project
+    - We began working on our prototype slideshow
+
+4.20.24
+    - I brought home what we had and began bolting together all the available parts
+    - I also used a saw to cut pvc pipes to the appropriate lengths and to cut a particle board into a square 
+    to hold our project.
+
+4.21.24
+    - I took all suplies and began assembly.
+    - after bolting, screwing, an attempted solder, cutting, and spray painting... we have completed the main structure
+
+4.27.24
+    - I got new motor drivers, rewired the motors, and attached a 12 volt, 5 amp coord.
+    - The stepper motors now work, and we can control their speed/ number of steps
