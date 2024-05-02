@@ -7,7 +7,7 @@
 import customtkinter
 import pygame
 import os
-from PIL import Image, ImageTk
+from PIL import Image
 from time import sleep
 
 pygame.mixer.init()
@@ -54,14 +54,16 @@ class MainMenu(customtkinter.CTkFrame):
         self.diagram = customtkinter.CTkLabel(master, image=images[1], text="", padx=15, anchor='center', bg_color="transparent", fg_color="transparent")
         self.diagram.grid(column=1, columnspan=7, row=3, rowspan=4)
         
-        self.grey = customtkinter.CTkLabel(master, text="", font=("Trebuchet MS", 85), anchor="center", text_color="white", fg_color="lightgrey")
-        self.grey.grid(column=2, columnspan=5, row=14, rowspan=8, sticky="news")
+        self.grey = customtkinter.CTkLabel(master, text="", font=("Trebuchet MS", 85), anchor="center", text_color="white", fg_color="lightgrey", width=self.winfo_screenwidth()/10 *3.07, height=self.winfo_screenheight()/9 * 1.75)
+        self.grey.place(x=self.winfo_screenwidth()//16 *3.7, y=self.winfo_screenheight()//30 *26.9, anchor="center")
 
-        self.add_slice = customtkinter.CTkButton(master, text_color="black", fg_color="white", bg_color="transparent", text="+", font=("Trebuchet MS", 50), anchor="center", command=master.add_slices)
-        self.add_slice.grid(column=5, columnspan=2, row=14, rowspan=8, sticky="news")
+        self.add_slice = customtkinter.CTkButton(master, text_color="black", fg_color="white", bg_color="lightgrey", hover_color="grey", text="+", corner_radius=48, font=("Trebuchet MS", 50), anchor="center", width=self.winfo_screenwidth()/1 *0.01, height=self.winfo_screenheight()/10 * 0.87, command=master.add_slices)
+        # self.add_slice.grid(column=5, columnspan=2, row=14, rowspan=8, sticky="news")
+        self.add_slice.place(x=self.winfo_screenwidth()//16 *5.3, y=self.winfo_screenheight()//30 *28.19, anchor="center")
         
-        self.remove_slice = customtkinter.CTkButton(master, text_color="black", fg_color="white", bg_color="transparent", text="-", font=("Trebuchet MS", 50), anchor="center", command=master.remove_slices)
-        self.remove_slice.grid(column=2, columnspan=2, row=14, rowspan=8, sticky="news")
+        self.remove_slice = customtkinter.CTkButton(master, text_color="black", fg_color="white", bg_color="lightgrey", hover_color="grey", text="-", corner_radius=48, font=("Trebuchet MS", 50), anchor="center", width=self.winfo_screenwidth()/10 *0.97, height=self.winfo_screenheight()/9 * 0.85, command=master.remove_slices)
+        # self.remove_slice.grid(column=2, columnspan=2, row=14, rowspan=8, sticky="news")
+        self.remove_slice.place(x=self.winfo_screenwidth()//16 *2.1, y=self.winfo_screenheight()//30 *28.19, anchor="center")
         
         self.slice_num = customtkinter.CTkLabel(master, image=images[3], text="", anchor="center")
         self.slice_num.grid(column=1, columnspan=7, row=9, sticky="news")
@@ -69,19 +71,25 @@ class MainMenu(customtkinter.CTkFrame):
         self.slice = customtkinter.CTkLabel(master, text="2", font=("Trebuchet MS", 85), anchor="center", text_color="white", fg_color="black")
         self.slice.grid(column=2, columnspan=5, row=13, sticky="news")
 
-        
-
         self.themes = customtkinter.CTkButton(master, text_color="white", fg_color="#7986CB", text="select a theme", font=("Trebuchet MS", 30), anchor="center", command=exit)
         self.themes.grid(column=20, columnspan=2, row=0, rowspan=3, pady=(10), sticky="news")
         
         self.options = customtkinter.CTkButton(master, text_color="white", fg_color="#7986CB", text="info", font=("Trebuchet MS", 30), anchor="center", command=exit)
         self.options.grid(column=23, columnspan=2, row=0, rowspan=3, pady=(10), sticky="news")
 
-        self.start = customtkinter.CTkButton(master, text_color="white", fg_color="#66BB6A", text="START", font=("Trebuchet MS", 100), anchor="center", command=exit)
-        self.start.grid(column=9, columnspan=8, row=6, rowspan=15, sticky="ewsn")
+        self.tile = customtkinter.CTkLabel(master, text="", anchor="center", text_color="white", fg_color="lightgrey", width=self.winfo_screenwidth()/4 *2.55, height=self.winfo_screenheight()/2 * 1.45, corner_radius=35)
+        self.tile.place(x=self.winfo_screenwidth()//6 *4.28, y=self.winfo_screenheight()//30 *22, anchor="center")
 
-        self.leave = customtkinter.CTkButton(master, text_color="white", fg_color="#E57373", text="EXIT", font=("Trebuchet MS", 100), anchor="center", command=exit)
-        self.leave.grid(column=18, columnspan=7, row=6, rowspan=15, sticky="news")
+        self.guide = customtkinter.CTkLabel(master, text="CONTROLS:", font=("Trebuchet MS", 60), anchor="center", text_color="black", fg_color="lightgrey", bg_color="transparent", corner_radius=0)
+        self.guide.place(x=self.winfo_screenwidth()//6 *3.1, y=self.winfo_screenheight()//30 *12.5, anchor="center")
+
+        self.start = customtkinter.CTkButton(master, text_color="white", fg_color="#66BB6A", bg_color="lightgrey", hover_color="green", text="START", font=("Trebuchet MS", 100), anchor="center", width=self.winfo_screenwidth()/4 *1.18, height=self.winfo_screenheight()/2, corner_radius=35, command=exit)
+        # self.start.grid(column=9, columnspan=8, row=6, rowspan=15, sticky="ewsn")
+        self.start.place(x=self.winfo_screenwidth()//6 *3.28, y=self.winfo_screenheight()//30 *22, anchor="center")
+
+        self.leave = customtkinter.CTkButton(master, text_color="white", fg_color="#E57373", bg_color="lightgrey", hover_color="red", text="EXIT", font=("Trebuchet MS", 100), anchor="center", width=self.winfo_screenwidth()/4 *1.18, height=self.winfo_screenheight()/2, corner_radius=35, command=exit)
+        # self.leave.grid(column=18, columnspan=7, row=6, rowspan=15, sticky="news")
+        self.leave.place(x=self.winfo_screenwidth()//6 *5.09, y=self.winfo_screenheight()//30 *22, anchor="center")
     
 class App(customtkinter.CTk):
     '''
