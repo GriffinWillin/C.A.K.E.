@@ -209,7 +209,7 @@ class Settings(customtkinter.CTkToplevel):
 
     def build_menu(self):
 
-        self.splash = customtkinter.CTkLabel(self, text="Settings", text_color=("white"), bg_color="#8560D1", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 85))
+        self.splash = customtkinter.CTkLabel(self, text="Settingsgit ", text_color=("white"), bg_color="#8560D1", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 85))
         self.splash.grid(column=3, columnspan=3, row=0, sticky="news")
 
         self.cut_depth = customtkinter.CTkButton(self, command=self.depth)
@@ -234,6 +234,7 @@ class Settings(customtkinter.CTkToplevel):
     #     self.master.wm_attributes("-fullscreen", self.master.status)
     def depth(self):
         pass
+
     def speed(self):
         pass
 
@@ -286,21 +287,22 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.wm_attributes("-fullscreen", True)
 
         # TURN THIS INTO A DICTIONARY OR AT LEAST A LIST MAYBE USING A FOR LOOP 
-        NAMES = ['Doug', 'Parker', 'Dan', 'Josh', 'Greg', 'Jay', 'Sean', 'Cameron', 'Tony', 'Pablo', 'Dominic']
+        NAMES = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet', 'Pink', 'Dark Mode', 'Light Mode', 'Rainbow', 'Hacker']
+        COLORS = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "pink", "grey", "white", "teal", "turquoise"]
         CHARACTERS = ["wizard", "spider", "cat4x", "frog4x", "gelatine4x", "ghost4x", "horseman4x", "raptor4x", "rockman4x", "skull4x", "spook4x"]
-        # BUTTONS = [self.wizard, self.spider, self.cat, self.frog, self.gelatine, self.ghost, self.horseman, self.raptor, self.rockman, self.skull, self.spook]
+        BUTTONS = [self.red, self.orange, self.yellow, self.green, self.blue, self.indigo, self.violet, self.pink, self.dark, self.light, self.gay, self.hacker]
         # character_png = {NAMES[i]:(os.path.join("CHARACTERS", f"{CHARACTERS[i]}.png")) for i in range(len(CHARACTERS))}
-        # self.setup_selection(BUTTONS, CHARACTERS, NAMES)
+        self.setup_selection(BUTTONS, COLORS, NAMES)
 
 
-    def setup_selection(self, buttons:list = [], images:list = [], names:list = []):
+    def setup_selection(self, buttons:list = [], colors:list = [], names:list = []):
 
         for i in range(len(buttons)):
-            image = Image.open(os.path.join("Images", f"{images[i]}.png"))
-            image_i = customtkinter.CTkImage(image, size=(100,100))
+            # image = Image.open(os.path.join("Images", f"{images[i]}.png"))
+            # image_i = customtkinter.CTkImage(image, size=(100,100))
 
-            buttons[i] = customtkinter.CTkButton(self, image=image_i, text=names[i], font=("Trebuchet MS", 30), text_color='white', bg_color="transparent", fg_color="#655482", hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey",
-                                                        anchor="center", command=lambda dest=images[i]: self.select(dest))
+            buttons[i] = customtkinter.CTkButton(self, text=names[i], font=("Trebuchet MS", 50), text_color='white', bg_color="transparent", fg_color=colors[i], hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey")
+                                                        # anchor="center", command=lambda dest=images[i]: self.select(dest))
             if (i < 2):
                 if (i % 2 == 0):
                     buttons[i].grid(column=1, columnspan=2, row=i+3, sticky="news")
@@ -320,19 +322,20 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.splash = customtkinter.CTkLabel(self, text_color=("white"), bg_color="transparent", anchor='center', fg_color="transparent", text="Select Theme", font=("Yu Mincho Demibold", 85))
         self.splash.grid(column=2, columnspan=3, row=0, rowspan=3, sticky="news")
 
-        self.blue = 'a blue background' # etc
-        self.spider = "spider"
-        self.cat = "cat"
-        self.frog = "frog"
-        self.gelatine = "gelatine"
-        self.ghost = "ghost"
-        self.horseman = "horseman"
-        self.raptor = "raptor"
-        self.rockman = "rockman"
-        self.skull = "skull"
-        self.spook = "spook"
+        self.red = "lots of red"
+        self.orange = "lots of orange"
+        self.yellow = "lots of yellow"
+        self.green = "lots of green"
+        self.blue = "lots of blue"
+        self.indigo = "lots of indigo"
+        self.violet = "lots of violet"
+        self.pink = "lots of pink"
+        self.dark = "darkmode, lots of grey"
+        self.light = "lightmode, lots of white"
+        self.gay = "rainbows?"
+        self.hacker = "1's and 0's all over"
 
-        self.back = customtkinter.CTkButton(self, text_color="white", bg_color="transparent", fg_color="#655482", text="RETURN TO GAME", font=("Trebuchet MS", 30), border_spacing=5, border_width=5, border_color="lightgrey", hover_color="lightgrey", anchor="center", command=self.destroy)
+        self.back = customtkinter.CTkButton(self, text_color="white", bg_color="transparent", fg_color="#655482", text="Return to C.A.K.E.", font=("Trebuchet MS", 30), border_spacing=5, border_width=5, border_color="lightgrey", hover_color="lightgrey", anchor="center", command=self.destroy)
         self.back.grid(column=2, columnspan=3, row=16, rowspan=4, sticky="news")
 
     def select(self, name):
@@ -364,7 +367,7 @@ class BindKeys(customtkinter.CTkToplevel):#
                                                         anchor="center")
             if (i < 2):
                 if (i % 2 == 0):
-                    labels[i].grid(column=1, columnspan=2, row=i+3, sticky="news")
+                    labels[i].grid(column=2, columnspan=2, row=i+3, sticky="news")
                 else:
                     labels[i].grid(column=4, columnspan=2, row=i+2, sticky="news")
             else:
