@@ -9,5 +9,3 @@ Current Objectives:
 
 *   Find a library compatible with our stepper motor
         - python library compatible with Le Potatoes, GPIO, and our stepper motor driver
-
-*   cut the pvc pipes, screw in the bolts
