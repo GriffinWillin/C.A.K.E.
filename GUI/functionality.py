@@ -7,7 +7,7 @@
 import customtkinter
 import pygame
 import os
-from PIL import Image  #, ImageTk
+from PIL import Image, ImageTk
 from time import sleep
 
 pygame.mixer.init()
