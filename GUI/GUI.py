@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 
 DEBUG = FALSE
 
-WIDTH = 1024
+WIDTH = 800
 HEIGHT = 600
 
 class CAKE(Frame):
@@ -64,11 +64,10 @@ class CAKE(Frame):
 window = Tk()
 window.title("C.A.K.E")
 app = CAKE(window)
-window.geometry("1024x600")
 ###################
 
 # # Images
-slices = Image.open((os.path.join('GUI','Images', 'slices.png')))
+slices = Image.open((os.path.join('Images', 'slices.png')))
 slices_image = ImageTk.PhotoImage(slices)
 
 # plus = Image.open(os.path.join('Images', 'plus.png'))
@@ -83,13 +82,13 @@ slices_image = ImageTk.PhotoImage(slices)
 # status = Image.open(os.path.join('Images'))
 # status_image = ImageTk.PhotoImage(file = os.path.join('Images'))
 
-start = Image.open(os.path.join('GUI', 'Images', "Start.png"))
+start = Image.open(os.path.join('Images', "Start.png"))
 start_image = ImageTk.PhotoImage(start)
 
 # align = Image.open(os.path.join('Images'))
 # align_image = ImageTk.PhotoImage(file = os.path.join('Images'))
 
-e_stop = Image.open(os.path.join('GUI', 'Images', "Stop.png"))
+e_stop = Image.open(os.path.join('Images', "Stop.png"))
 e_stop_image = ImageTk.PhotoImage(e_stop)
 
 # Labels
