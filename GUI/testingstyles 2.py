@@ -301,7 +301,7 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
             # image = Image.open(os.path.join("Images", f"{images[i]}.png"))
             # image_i = customtkinter.CTkImage(image, size=(100,100))
 
-            buttons[i] = customtkinter.CTkButton(self, text=names[i], font=("Trebuchet MS", 50), text_color='white', bg_color="transparent", fg_color=colors[i], hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey")
+            buttons[i] = customtkinter.CTkButton(self, text=names[i], font=("Trebuchet MS", 50), text_color='black', bg_color="transparent", fg_color=colors[i], hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey")
                                                         # anchor="center", command=lambda dest=images[i]: self.select(dest))
             if (i < 2):
                 if (i % 2 == 0):
@@ -335,7 +335,7 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.gay = "rainbows?"
         self.hacker = "1's and 0's all over"
 
-        self.back = customtkinter.CTkButton(self, text_color="white", bg_color="transparent", fg_color="#655482", text="Return to C.A.K.E.", font=("Trebuchet MS", 30), border_spacing=5, border_width=5, border_color="lightgrey", hover_color="lightgrey", anchor="center", command=self.destroy)
+        self.back = customtkinter.CTkButton(self, text_color="black", bg_color="transparent", fg_color="turquoise", text="Return to C.A.K.E.", font=("Trebuchet MS", 60), border_spacing=5, border_width=5, border_color="lightgrey", hover_color="lightgrey", anchor="center", command=self.destroy)
         self.back.grid(column=2, columnspan=3, row=16, rowspan=4, sticky="news")
 
     def select(self, name):
