@@ -38,3 +38,16 @@
 4.15.24
     - We all got together and used our free printing grams to print all the needed parts for our project
     - We began working on our prototype slideshow
+
+4.20.24
+    - I brought home what we had and began bolting together all the available parts
+    - I also used a saw to cut pvc pipes to the appropriate lengths and to cut a particle board into a square 
+    to hold our project.
+
+4.21.24
+    - I took all suplies and began assembly.
+    - after bolting, screwing, an attempted solder, cutting, and spray painting... we have completed the main structure
+
+4.27.24
+    - I got new motor drivers, rewired the motors, and attached a 12 volt, 5 amp coord.
+    - The stepper motors now work, and we can control their speed/ number of steps
