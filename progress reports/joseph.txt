@@ -15,3 +15,9 @@ started printing parts for project
 
 24.16.04
 began putting pieces together and threading the holes in the prints for easier assembly
+
+24.29.04
+Began making major updates to the GUI
+
+24.01.05
+Began implementing functions to GUI
