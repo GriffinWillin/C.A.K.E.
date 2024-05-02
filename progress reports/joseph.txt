@@ -1,0 +1,23 @@
+24.03.04
+met with group
+looked for usable parts for project
+
+24.05.04
+checked first floor help desk for electronics
+
+24.09.04
+checked out motors and controllers for motors
+stayed up from 2:00 A.M. to 5:30 A.M. with cameron to learn more about motors
+began working on GUI
+
+24.15.04
+started printing parts for project
+
+24.16.04
+began putting pieces together and threading the holes in the prints for easier assembly
+
+24.29.04
+Began making major updates to the GUI
+
+24.01.05
+Began implementing functions to GUI
