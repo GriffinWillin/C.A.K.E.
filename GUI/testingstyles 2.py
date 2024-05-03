@@ -12,6 +12,7 @@ from time import sleep
 
 pygame.mixer.init()
 music = True
+Theme = ""
 
 class MainMenu(customtkinter.CTkFrame):
     def __init__(self, master):
@@ -278,6 +279,7 @@ class Settings(customtkinter.CTkToplevel):
 
 class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
     def __init__(self, master):
+        global Theme
         super().__init__(fg_color="#655482")
         self.geometry(f"{self.winfo_screenwidth()}x{self.winfo_screenheight()}")
         App.build_grid(self, 6, 20)
@@ -285,6 +287,8 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.create_labels()
         self.master = master
         self.wm_attributes("-fullscreen", True)
+        self.theme = Theme
+        Theme = self.theme
 
         # TURN THIS INTO A DICTIONARY OR AT LEAST A LIST MAYBE USING A FOR LOOP 
         NAMES = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet', 'Pink', 'Dark Mode', 'Light Mode', 'Rainbow', 'Hacker']
@@ -301,8 +305,8 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
             # image = Image.open(os.path.join("Images", f"{images[i]}.png"))
             # image_i = customtkinter.CTkImage(image, size=(100,100))
 
-            buttons[i] = customtkinter.CTkButton(self, text=names[i], font=("Trebuchet MS", 50), text_color='black', bg_color="transparent", fg_color=colors[i], hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey")
-                                                        # anchor="center", command=lambda dest=images[i]: self.select(dest))
+            buttons[i] = customtkinter.CTkButton(self, text=names[i], font=("Trebuchet MS", 50), text_color='black', bg_color="transparent", fg_color=colors[i], hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey",
+                                                        anchor="center", command=lambda dest=colors[i]: self.select(dest))
             if (i < 2):
                 if (i % 2 == 0):
                     buttons[i].grid(column=1, columnspan=2, row=i+3, sticky="news")
@@ -339,8 +343,9 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.back.grid(column=2, columnspan=3, row=16, rowspan=4, sticky="news")
 
     def select(self, name):
-        global character
-        character = (os.path.join("Images", f"{name}.png"))
+        # images? = (os.path.join("Images", f"{name}.png"))
+        self.theme = name
+
 
 class BindKeys(customtkinter.CTkToplevel):#
     def __init__(self, master):
