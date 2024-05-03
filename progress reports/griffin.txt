@@ -1,28 +1,49 @@
-APRL/0004/2024
+April 04 2024
 - met with guys to make repo
 - looked around for materials and discussed design
 - got pipes :D
 
-APRL/0005/2024
-- looked at parts to rent/buy at the component place in the IESB
+April 05 2024
+- looked at parts to rent buy at the component place in the IESB
     - found stepper motors and motor controllers, going to rent them
 
-APRL/0006/2024
+April 06 2024
 - did some CAD work on the design
 
-APRL/0007/2024
+April 07 2024
 - more CAD stuff
 
-APRL/0013/2024
+April 13 2024
 - found bolts
 
-APRL/0014/2024
+April 14 2024
 - printed foot
 - adjusted pipe sizes
 
-APRL/0015/2024
+April 15 2024
 - printed ring, ring brace, leg mount
 
-APRL/0016/2024
+April 16 2024
 - worked on presentation
 - tested assembly
+
+April 22 2024
+- modeled crossbeam
+- printed crossbeam
+
+April 25 2024
+- modeled rack and pinion
+- modeled strap
+- modeled support
+
+May 01 2024
+- printed strap
+- printed support
+- printed pinion
+- changed from gear-triven tray rotation to direct drive using parts borrowed from a microwave
+
+May 02 2024
+- modeled blade clamp
+- modeled adapter
+- printed rack
+- printed adapter
