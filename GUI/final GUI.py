@@ -7,20 +7,29 @@
 import customtkinter
 import pygame
 import os
-from PIL import Image
+from PIL import Image, ImageTk
 from time import sleep
 
 pygame.mixer.init()
 music = True
 Theme = ""
+DEPTH = 1
+SPEED = 1
+CUTS = 0
 
 class MainMenu(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master, bg_color=("#90CAF9"), border_width=2, fg_color=("transparent"), height=600, width=1024)
         # App.get_background(master, 'brighttrain.jpeg')
-        # pngs = ["C.A.K.E_", "Ellipse 1", "R", "slices", "Start", "Stop"]
-        # images = []
+        gifs = ["2_slices.gif", "4_slices.gif", "6_slices.gif", "8_slices.gif"]
+        self.images = []
 
+
+        for i in range(len(gifs)):
+            image = Image.open(os.path.join("Images", f"{gifs[i]}"))
+            print("HERE")
+            image_i = customtkinter.CTkImage(image, size=(335,335))
+            self.images.append(image_i)
 
         # image = Image.open(os.path.join("Images", f"{pngs[0]}.png"))
         # image_i = customtkinter.CTkImage(image, size=(135,135))
@@ -48,50 +57,50 @@ class MainMenu(customtkinter.CTkFrame):
 
         ################################################################################################################################
 
-        self.splash = customtkinter.CTkLabel(master, text="C.A.K.E", text_color="#E57373", bg_color="#90CAF9", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 120))
-        self.splash.place(x=self.winfo_screenwidth()//9, y=60, anchor="center")
+        self.splash = customtkinter.CTkLabel(master, text="C.A.K.E", text_color="#E57373", bg_color="#90CAF9", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 80))
+        self.splash.place(x=self.winfo_screenwidth()//3*1.65, y=300, anchor="center")
         # self.splash.grid(column=0, columnspan=6, row=0, rowspan=1)
 
-        self.diagram = customtkinter.CTkLabel(master, text="", padx=15, anchor='center', bg_color="transparent", fg_color="transparent")
-        self.diagram.grid(column=0, columnspan=5, row=3, rowspan=4, padx=10)
+        self.diagram = customtkinter.CTkLabel(master, image=self.images[0], text="", padx=0, anchor='center', bg_color="transparent", fg_color="transparent")
+        self.diagram.grid(column=0, columnspan=5, row=1, rowspan=4, padx=0, sticky="news")
         
-        self.grey = customtkinter.CTkLabel(master, text="", font=("Trebuchet MS", 85), anchor="center", text_color="white", fg_color="lightgrey") #width=self.winfo_screenwidth()/10 *3.07, height=self.winfo_screenheight()/9 * 1.75)
-        self.grey.grid(column=0, columnspan=5, row=15, rowspan=11, pady=2, padx=10, sticky="news")
+        self.grey = customtkinter.CTkLabel(master, text="", font=("Trebuchet MS", 65), anchor="center", text_color="white", fg_color="lightgrey") #width=self.winfo_screenwidth()/10 *3.07, height=self.winfo_screenheight()/9 * 1.75)
+        self.grey.grid(column=0, columnspan=5, row=20, rowspan=11, pady=2, padx=10, sticky="news")
         #self.grey.place(x=self.winfo_screenwidth()//16 *3.7, y=self.winfo_screenheight()//30 *26.9, anchor="center")
 
         self.add_slice = customtkinter.CTkButton(master, text_color="black", fg_color="white", bg_color="lightgrey", hover_color="grey", text="+", corner_radius=48, font=("Trebuchet MS", 60), anchor="center", command=master.add_slices) #, width=self.winfo_screenwidth()/1 *0.01, height=self.winfo_screenheight()/10 * 0.87, command=master.add_slices)
-        self.add_slice.grid(column=3, columnspan=2, row=16, rowspan=9, padx=10, sticky="news")
+        self.add_slice.grid(column=3, columnspan=2, row=22, rowspan=3, padx=10, sticky="news")
         #self.add_slice.place(x=self.winfo_screenwidth()//16 *5.3, y=self.winfo_screenheight()//30 *28.19, anchor="center")
         
         self.remove_slice = customtkinter.CTkButton(master, text_color="black", fg_color="white", bg_color="lightgrey", hover_color="grey", text="-", corner_radius=48, font=("Trebuchet MS", 60), anchor="center", command=master.remove_slices) #, width=self.winfo_screenwidth()/10 *0.97, height=self.winfo_screenheight()/9 * 0.85, command=master.remove_slices)
-        self.remove_slice.grid(column=0, columnspan=2, row=16, rowspan=9, padx=10, sticky="news")
+        self.remove_slice.grid(column=0, columnspan=2, row=22, rowspan=3, padx=10, sticky="news")
         #self.remove_slice.place(x=self.winfo_screenwidth()//16 *2.1, y=self.winfo_screenheight()//30 *28.19, anchor="center")
         
-        self.slice_num = customtkinter.CTkLabel(master, text="", anchor="center")
+        self.slice_num = customtkinter.CTkLabel(master, text="Number of Slices", font=("Trebuchet MS", 35), anchor="center")
         self.slice_num.grid(column=0, columnspan=5, row=9, padx=10, sticky="news")
 
-        self.slice = customtkinter.CTkLabel(master, text="2", font=("Trebuchet MS", 85), anchor="center", text_color="white", fg_color="black")
-        self.slice.grid(column=0, columnspan=5, row=15, padx=10, sticky="news")
+        self.slice = customtkinter.CTkLabel(master, text="2", font=("Trebuchet MS", 60), anchor="center", text_color="white", fg_color="black")
+        self.slice.grid(column=0, columnspan=5, row=20, padx=10, sticky="news")
 
         self.themes = customtkinter.CTkButton(master, text_color="white", fg_color="#7986CB", text="Theme Select", font=("Trebuchet MS", 30), anchor="center", command=master.theme_select)
-        self.themes.grid(column=20, columnspan=2, row=0, rowspan=3, pady=(10), sticky="news")
+        self.themes.grid(column=20, columnspan=2, row=0, rowspan=2, pady=(10), sticky="news")
         
         self.options = customtkinter.CTkButton(master, text_color="white", fg_color="#7986CB", text="Settings", font=("Trebuchet MS", 30), anchor="center", command=master.open_settings)
-        self.options.grid(column=23, columnspan=2, row=0, rowspan=3, pady=(10), sticky="news")
+        self.options.grid(column=23, columnspan=2, row=0, rowspan=2, pady=(10), sticky="news")
 
-        self.tile = customtkinter.CTkLabel(master, text="", anchor="center", text_color="white", fg_color="lightgrey", width=self.winfo_screenwidth()/4 *2.55, height=self.winfo_screenheight()/2 * 1.45, corner_radius=35)
-        self.tile.place(x=self.winfo_screenwidth()//6 *4.28, y=self.winfo_screenheight()//30 *22, anchor="center")
+        self.tile = customtkinter.CTkLabel(master, text="", anchor="center", text_color="white", fg_color="lightgrey", width=self.winfo_screenwidth()/4 *2.55, height=self.winfo_screenheight()/3 * 1.45, corner_radius=35)
+        self.tile.place(x=self.winfo_screenwidth()//6 *4.34, y=self.winfo_screenheight()//30 *23.75, anchor="center")
 
-        self.guide = customtkinter.CTkLabel(master, text="CONTROLS:", font=("Trebuchet MS", 60), anchor="center", text_color="black", fg_color="lightgrey", bg_color="transparent", corner_radius=0)
-        self.guide.place(x=self.winfo_screenwidth()//6 *3.1, y=self.winfo_screenheight()//30 *12.5, anchor="center")
+        self.guide = customtkinter.CTkLabel(master, text="CONTROLS:", font=("Trebuchet MS", 36), anchor="center", text_color="black", fg_color="lightgrey", bg_color="transparent", corner_radius=0)
+        self.guide.place(x=self.winfo_screenwidth()//6 *3.12, y=self.winfo_screenheight()//30 *17.9, anchor="center")
 
-        self.start = customtkinter.CTkButton(master, text_color="white", fg_color="#66BB6A", bg_color="lightgrey", hover_color="green", text="START", font=("Trebuchet MS", 100), anchor="center", width=self.winfo_screenwidth()/4 *1.18, height=self.winfo_screenheight()/2, corner_radius=35, command=exit)
+        self.start = customtkinter.CTkButton(master, text_color="white", fg_color="#66BB6A", bg_color="lightgrey", hover_color="green", text="START", font=("Trebuchet MS", 65), anchor="center", height=self.winfo_screenheight()/3, corner_radius=35, command=exit)
         # self.start.grid(column=9, columnspan=8, row=6, rowspan=15, sticky="ewsn")
-        self.start.place(x=self.winfo_screenwidth()//6 *3.28, y=self.winfo_screenheight()//30 *22, anchor="center")
+        self.start.place(x=self.winfo_screenwidth()//6 *3.28, y=self.winfo_screenheight()//30 *24.44, anchor="center")
 
-        self.leave = customtkinter.CTkButton(master, text_color="white", fg_color="#E57373", bg_color="lightgrey", hover_color="red", text="EXIT", font=("Trebuchet MS", 100), anchor="center", width=self.winfo_screenwidth()/4 *1.18, height=self.winfo_screenheight()/2, corner_radius=35, command=exit)
+        self.leave = customtkinter.CTkButton(master, text_color="white", fg_color="#E57373", bg_color="lightgrey", hover_color="red", text="EXIT", font=("Trebuchet MS", 65), anchor="center", width=300, height=self.winfo_screenheight()/3, corner_radius=35, command=exit)
         # self.leave.grid(column=18, columnspan=7, row=6, rowspan=15, sticky="news")
-        self.leave.place(x=self.winfo_screenwidth()//6 *5.09, y=self.winfo_screenheight()//30 *22, anchor="center")
+        self.leave.place(x=self.winfo_screenwidth()//6 *5.10, y=self.winfo_screenheight()//30 *24.44, anchor="center")
     
 class App(customtkinter.CTk):
     '''
@@ -116,8 +125,8 @@ class App(customtkinter.CTk):
     
     @slices.setter
     def slices(self, value):
-        if (value > 12):
-            value = 12
+        if (value > 8):
+            value = 8
         elif (value < 2):
             value = 2
         self._slices = value
@@ -141,7 +150,13 @@ class App(customtkinter.CTk):
         bg_lbl.place(relheight = 1.0, x=0, y=0)
     
     def add_slices(self):
+        global CUTS
+        if (CUTS < 3):
+            CUTS += 1
+        else:
+            CUTS = CUTS
         self.slices += 2
+        self.frame.diagram.configure(image=(self.frame.images[CUTS]))
         # self.frame.diagram.configure(image=self.DIAGRAMS[self.slices-2])
         self.frame.slice.configure(text=f"{self.slices}")
         self.frame.diagram.update()
@@ -149,7 +164,13 @@ class App(customtkinter.CTk):
         sleep(0.01)
 
     def remove_slices(self):
+        global CUTS
+        if (CUTS > 0):
+            CUTS -= 1
+        else:
+            CUTS = CUTS
         self.slices -= 2
+        self.frame.diagram.configure(image=(self.frame.images[CUTS]))
         # self.frame.diagram.configure(image=self.DIAGRAMS[self.slices-2]) #need to fix the number for the images, or could just use fillers to make it easy
         self.frame.slice.configure(text=f"{self.slices}")
         self.frame.diagram.update()
@@ -196,9 +217,12 @@ class Settings(customtkinter.CTkToplevel):
         
     def setup_options(self, buttons:list = [], names:list = []):
 
-        for i in range(len(buttons)):
+        for i in range(2, len(buttons)):
+        
+            print(self.OPTIONS[buttons[i]])
             buttons[i].configure(self, text=names[i], font=("Trebuchet MS", 30), text_color='white', bg_color="transparent", fg_color="#655482", hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey",
                                                         anchor="center")
+        for i in range (len(buttons)):
             if (i < 2):
                 if (i % 2 == 0):
                     buttons[i].grid(column=1, columnspan=3, row=i+3, rowspan=1, sticky="news")
@@ -212,11 +236,13 @@ class Settings(customtkinter.CTkToplevel):
 
     def build_menu(self):
 
-        self.splash = customtkinter.CTkLabel(self, text="Settingsgit ", text_color=("white"), bg_color="#8560D1", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 85))
+        self.splash = customtkinter.CTkLabel(self, text="Settings", text_color=("white"), bg_color="#8560D1", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 85))
         self.splash.grid(column=3, columnspan=3, row=0, sticky="news")
 
-        self.cut_depth = customtkinter.CTkButton(self, command=self.depth)
-        self.cut_speed = customtkinter.CTkButton(self, command=self.speed)
+        self.cut_depth = customtkinter.CTkSlider(self, from_=.5, to=1, number_of_steps=2, command=self.depth)
+        self.cut_depth.set(1)
+        self.cut_speed = customtkinter.CTkSlider(self, from_=1, to=100, number_of_steps=25, command=self.speed)
+        self.cut_speed.set(1)
         # self.other = customtkinter.CTkButton(self, command=self.credit)
         self.info = customtkinter.CTkButton(self, command=self.list_info)
         if (music):
@@ -235,17 +261,17 @@ class Settings(customtkinter.CTkToplevel):
     #         self.master.status = False
     #     self.wm_attributes("-fullscreen", self.master.status)
     #     self.master.wm_attributes("-fullscreen", self.master.status)
-    def depth(self):
-        pass
+    def depth(self, n):
+        global DEPTH
+        # print(n)
+        DEPTH = n
+        print(DEPTH)
 
-    def speed(self):
-        pass
-
-    def remove_slices(self):
-        pass
-
-    def add_slices(self):
-        pass
+    def speed(self, n):
+        global SPEED
+        # print(n)
+        SPEED = n
+        print(SPEED)
 
     def list_info(self): # turn this into a help icon?
         list = BindKeys(self)
@@ -359,9 +385,9 @@ class BindKeys(customtkinter.CTkToplevel):#
         self.master = master
         self.wm_attributes("-fullscreen", self.master.master.status)
         
-        ACTIONS = ["MOVE UP", "MOVE LEFT", "MOVE DOWN", "MOVE RIGHT", "SHOOT", "EXIT GAME"]
-        BUTTONS = [self.up, self.left, self.down, self.right, self.shoot, self.leave]
-        DEFAULT = ["W", "A", "S", "D", "SPACE", "ESC"]
+        MEASUREMENTS = ["", "MOVE LEFT", "MOVE DOWN", "MOVE RIGHT", "SHOOT", "EXIT GAME"]
+        LABLES = [self.up, self.left, self.down, self.right, self.shoot, self.leave]
+        NUMBERS = ["W", "A", "S", "D", "SPACE", "ESC"]
         # self.DICT = {ACTIONS[i]:DEFAULT[i] for i in range(len(ACTIONS))}
         self.setup_selection(BUTTONS, ACTIONS, DEFAULT)
 
