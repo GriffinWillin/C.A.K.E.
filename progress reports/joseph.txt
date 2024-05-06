@@ -21,3 +21,9 @@ Began making major updates to the GUI
 
 24.01.05
 Began implementing functions to GUI
+
+24.03.05
+finished all essential elements of the GUI
+
+24.05.05
+began fleshing out the theme selections for the final GUI
