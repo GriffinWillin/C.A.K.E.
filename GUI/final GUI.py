@@ -20,7 +20,6 @@ text_colors = []
 bg_colors = []
 hover_colors = []
 
-
 class MainMenu(customtkinter.CTkFrame):
     def __init__(self, master):
         global Theme
@@ -111,10 +110,6 @@ class App(customtkinter.CTk):
             value = 2
         self._slices = value
 
-
-
-
-
     ####################################################################################################################################
 
     def build_grid(self, columns:int, rows:int, weight_c:int = 1, weight_r:int = 1):
@@ -181,7 +176,7 @@ class Settings(customtkinter.CTkToplevel):
         self.wm_attributes("-fullscreen", True)
         self.theme = Theme
         
-        self.OPTIONS = {self.cut_depth:"CUT DEPTH", self.cut_speed:"CUT SPEED", self.info:"INFO"}
+        self.OPTIONS = {self.depth_:f"Depth:{DEPTH}", self.speed_:f"Speed:{SPEED}", self.cut_depth:"CUT DEPTH", self.cut_speed:"CUT SPEED"}
         self.setup_options(list(self.OPTIONS.keys()), list(self.OPTIONS.values()))
         
     def setup_options(self, buttons:list = [], names:list = []):
@@ -210,12 +205,14 @@ class Settings(customtkinter.CTkToplevel):
         self.splash = customtkinter.CTkLabel(self, text="Settings", text_color=("white"), bg_color="#8560D1", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 85))
         self.splash.grid(column=3, columnspan=3, row=0, sticky="news")
 
+        self.depth_ = customtkinter.CTkLabel(self, font=("Trebuchet MS", 30))
+
+        self.speed_ = customtkinter.CTkLabel(self,font=("Trebuchet MS", 30))
+
         self.cut_depth = customtkinter.CTkSlider(self, from_=.5, to=1, number_of_steps=2, command=self.depth)
         self.cut_depth.set(DEPTH)
         self.cut_speed = customtkinter.CTkSlider(self, from_=1, to=100, number_of_steps=25, command=self.speed)
         self.cut_speed.set(SPEED)
-
-        self.info = customtkinter.CTkButton(self, command=self.list_info)
             
         self.back = customtkinter.CTkButton(self, text_color="white", bg_color="transparent", fg_color="#655482", hover_color="lightgrey", text="RETURN TO C.A.K.E.", font=("Trebuchet MS", 30), border_width=5, border_color="lightgrey", command=self.destroy)
         self.back.grid(column=3, columnspan=3, row=12, rowspan=2, sticky="news")
@@ -231,23 +228,6 @@ class Settings(customtkinter.CTkToplevel):
         # print(n)
         SPEED = n
         print(SPEED)
-
-    def list_info(self): # turn this into a help icon?
-        list = BindKeys(self)
-        self.attributes("-topmost", False)
-        list.attributes("-topmost", True)
-        list.mainloop()
-
-    # def arena_select(self): # can turn this into a way to change themes
-    #     global arena
-        
-    #     if (self.bg == 0):
-    #         self.bg += 1
-    #     else:
-    #         self.bg -= 1
-
-        # self.arena_toggle.configure(text=f"Current Arena: {self.ARENAS[self.bg]}")
-        # arena = (os.path.join("Backgrounds", f"{self.ARENAS[self.bg]}.jpeg"))
 
 class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
     def __init__(self, master):
@@ -310,17 +290,25 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.back.grid(column=2, columnspan=3, row=16, rowspan=3, sticky="news")
 
     def select(self, name):
-        changes = list(self.theme.keys())
-        for option in changes:
-            self.theme[option] = name
-            self.master.frame.bg.configure(bg_color=name)
-            self.master.frame.splash.configure(text_color=name, bg_color=name)
-            self.master.frame.diagram.configure(text_color=name)
-            self.master.frame.add_slice.configure(text_color=name)
-            self.master.frame.remove_slice.configure(fg_color=name)
-            self.master.frame.slice_num.configure(fg_color=name)
-            self.master.frame.themes.configure(fg_color=name)
-            self.master.frame.options.configure(fg_color=name)
+        self.master.frame.bg.configure(bg_color=self.theme["bg"], text_color=self.theme["text"])
+        self.master.frame.splash.configure(text_color=self.theme["text"], bg_color=self.theme["bg"], fg_color=self.theme["bg"])
+        self.master.frame.diagram.configure(bg_color=self.theme["bg"])
+        self.master.frame.add_slice.configure(text_color=self.theme["text"], fg_color=self.theme["button"], bg_color=self.theme["tile"])
+        self.master.frame.remove_slice.configure(text_color=self.theme["text"], fg_color=self.theme["button"], bg_color=self.theme["tile"])
+        self.master.frame.slice_num.configure(text_color=self.theme["text"], bg_color=self.theme["tile"])
+        self.master.frame.themes.configure(fg_color=self.theme["button"], text_color=self.theme["text"])
+        self.master.frame.options.configure(text_color=self.theme["text"], fg_color=self.theme["button"])
+        # changes = list(self.theme.keys())
+        # for option in changes:
+        #     self.theme[option] = name
+        #     self.master.frame.bg.configure(bg_color=name)
+        #     self.master.frame.splash.configure(text_color=name, bg_color=name)
+        #     self.master.frame.diagram.configure(text_color=name)
+        #     self.master.frame.add_slice.configure(text_color=name)
+        #     self.master.frame.remove_slice.configure(fg_color=name)
+        #     self.master.frame.slice_num.configure(fg_color=name)
+        #     self.master.frame.themes.configure(fg_color=name)
+        #     self.master.frame.options.configure(fg_color=name)
         self.setup_selection(self.BUTTONS, self.COLORS, self.NAMES)
         self.destroy()
         self.master.theme_select()
