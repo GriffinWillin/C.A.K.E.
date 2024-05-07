@@ -28,17 +28,16 @@ class MainMenu(customtkinter.CTkFrame):
         self.images = []
         self.theme = Theme
 
-
         for i in range(len(gifs)):
             image = Image.open(os.path.join("Images", f"{gifs[i]}"))
             image_i = customtkinter.CTkImage(image, size=(335,335))
             self.images.append(image_i)
 
         ################################################################################################################################
-        self.bg = customtkinter.CTkLabel(master, text="", text_color=self.theme["text"], bg_color=self.theme["bg"])
+        self.bg = customtkinter.CTkLabel(master, text="", bg_color=self.theme["bg"])
         self.bg.grid(column=0, columnspan=26, row=0, rowspan=26, sticky="news")
 
-        self.splash = customtkinter.CTkLabel(master, text="C.A.K.E", text_color="#E57373", bg_color="#90CAF9", anchor='center', font=("Yu Mincho Demibold", 80))
+        self.splash = customtkinter.CTkLabel(master, text="C.A.K.E", text_color=self.theme["splash"], bg_color=self.theme["bg"], anchor='center', font=("Yu Mincho Demibold", 80))
         self.splash.place(x=self.winfo_screenwidth()//3*1.65, y=300, anchor="center")
         # self.splash.grid(column=0, columnspan=6, row=0, rowspan=1)
 
@@ -171,10 +170,11 @@ class Settings(customtkinter.CTkToplevel):
         super().__init__(fg_color=Theme["bg"])
         self.geometry(f"{self.winfo_screenwidth()}x{self.winfo_screenheight()}")
         App.build_grid(self, 8, 20)
+        self.theme = Theme
         self.build_menu()
         self.master = master
         self.wm_attributes("-fullscreen", True)
-        self.theme = Theme
+        
         
         self.OPTIONS = {self.depth_:f"Depth:{DEPTH}", self.speed_:f"Speed:{SPEED}", self.cut_depth:"CUT DEPTH", self.cut_speed:"CUT SPEED"}
         self.setup_options(list(self.OPTIONS.keys()), list(self.OPTIONS.values()))
@@ -235,13 +235,14 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         super().__init__(fg_color=Theme["bg"])
         self.geometry(f"{self.winfo_screenwidth()}x{self.winfo_screenheight()}")
         App.build_grid(self, 6, 20)
-        # App.get_background(self, "brighttrain.jpeg")
-        self.create_labels()
         self.master = master
         self.wm_attributes("-fullscreen", True)
         self.theme = Theme
-        Theme = self.theme
+        self.create_labels()
 
+        self.red_ = {"bg":"red", "text":"white", "button":"blue", "hover":"lightgrey", "tile":"lightgrey", "guide":"white"}
+
+        self.themes = {"red":self.red_}
         self.NAMES = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet', 'Pink', 'Dark Mode', 'Light Mode']
         self.COLORS = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "pink", "grey", "white", "teal", "turquoise"]
         self.BUTTONS = [self.red, self.orange, self.yellow, self.green, self.blue, self.indigo, self.violet, self.pink, self.dark, self.light]
@@ -254,7 +255,7 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
             # image = Image.open(os.path.join("Images", f"{images[i]}.png"))
             # image_i = customtkinter.CTkImage(image, size=(100,100))
 
-            buttons[i] = customtkinter.CTkButton(self, text=names[i], font=("Trebuchet MS", 35), text_color=self.theme["text"], bg_color="transparent", fg_color=self.theme["button"], hover_color="lightgrey", border_width=5, border_spacing=5, border_color="lightgrey",
+            buttons[i] = customtkinter.CTkButton(self, text=names[i], font=("Trebuchet MS", 35), text_color=self.theme["text"], bg_color="transparent", fg_color=self.theme["button"], hover_color=self.theme["hover"], border_width=5, border_spacing=5, border_color="lightgrey",
                                                         anchor="center", command=lambda dest=colors[i]: self.select(dest))
             if (i < 2):
                 if (i % 2 == 0):
@@ -272,7 +273,7 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
 
     def create_labels(self):
 
-        self.splash = customtkinter.CTkLabel(self, text_color=("white"), bg_color="transparent", anchor='center', fg_color="transparent", text="Select Theme", font=("Yu Mincho Demibold", 65))
+        self.splash = customtkinter.CTkLabel(self, text_color=self.theme["text"], bg_color=self.theme["bg"], anchor='center', text="Select Theme", font=("Yu Mincho Demibold", 65))
         self.splash.grid(column=2, columnspan=3, row=0, rowspan=3, sticky="news")
 
         self.red = "lots of red"
@@ -286,10 +287,13 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.dark = "darkmode, lots of grey"
         self.light = "lightmode, lots of white"
 
-        self.back = customtkinter.CTkButton(self, text_color="black", bg_color="transparent", fg_color="turquoise", text="Return to C.A.K.E.", font=("Trebuchet MS", 50), border_spacing=5, border_width=5, border_color="lightgrey", hover_color="lightgrey", anchor="center", command=self.destroy)
+        self.back = customtkinter.CTkButton(self, text_color=self.theme["text"], bg_color="transparent", fg_color=self.theme["button"], text="Return to C.A.K.E.", font=("Trebuchet MS", 50), border_spacing=5, border_width=5, border_color="lightgrey", hover_color=self.theme["hover"], anchor="center", command=self.destroy)
         self.back.grid(column=2, columnspan=3, row=16, rowspan=3, sticky="news")
 
     def select(self, name):
+        global Theme
+        self.theme = self.themes[name]
+        Theme = self.theme
         self.master.frame.bg.configure(bg_color=self.theme["bg"], text_color=self.theme["text"])
         self.master.frame.splash.configure(text_color=self.theme["text"], bg_color=self.theme["bg"], fg_color=self.theme["bg"])
         self.master.frame.diagram.configure(bg_color=self.theme["bg"])
