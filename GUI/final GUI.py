@@ -10,7 +10,7 @@ from PIL import Image, ImageTk
 from time import sleep
 
 music = True
-Theme = {"bg":"#90CAF9", "text":"black", "button":"blue", "hover":"lightgrey", "tile":"grey", "guide":"white"}
+Theme = {"bg":"#90CAF9", "text":"white", "button":"blue", "hover":"lightgrey", "tile":"grey", "guide":"white", "splash":"red"}
 DEPTH = 1
 SPEED = 1
 CUTS = 0
@@ -24,7 +24,7 @@ class MainMenu(customtkinter.CTkFrame):
     def __init__(self, master):
         global Theme
         super().__init__(master, border_width=2, height=600, width=1024)
-        gifs = ["2_slices.gif", "4_slices.gif", "6_slices.gif", "8_slices.gif"]
+        gifs = ["2_slices.png", "4_slices.png", "6_slices.png", "8_slices.png"]
         self.images = []
         self.theme = Theme
 
