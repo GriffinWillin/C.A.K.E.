@@ -17,7 +17,7 @@ STOP = 19
 theBug = True
 runnin = True
 h_tick = 0
-Theme = {"bg":"#90CAF9", "text":"white", "button":"blue", "hover":"lightgrey", "tile":"grey", "guide":"white", "splash":"red"}
+Theme = {"bg":"#90CAF9", "text":"white", "button":"teal", "hover":"lightgrey", "tile":"lightgrey", "guide":"white", "splash":"red"}
 DEPTH = 70
 SPEED = 50
 CUTS = 0
@@ -171,10 +171,10 @@ class MainMenu(customtkinter.CTkFrame):
         self.splash = customtkinter.CTkLabel(master, text="C.A.K.E", text_color=self.theme["splash"], bg_color=self.theme["bg"], anchor='center', font=("Yu Mincho Demibold", 80))
         self.splash.place(x=self.winfo_screenwidth()//3*1.65, y=300, anchor="center")
 
-        self.diagram = customtkinter.CTkLabel(master, image=self.images[0], text="", padx=0, anchor='center', bg_color="transparent", fg_color="transparent")
+        self.diagram = customtkinter.CTkLabel(master, image=self.images[0], text="", padx=0, anchor='center')
         self.diagram.grid(column=0, columnspan=5, row=1, rowspan=4, padx=0, sticky="news")
         
-        self.grey = customtkinter.CTkLabel(master, text="", font=("Trebuchet MS", 65), anchor="center", text_color="white", fg_color="lightgrey") #width=self.winfo_screenwidth()/10 *3.07, height=self.winfo_screenheight()/9 * 1.75)
+        self.grey = customtkinter.CTkLabel(master, text="", font=("Trebuchet MS", 65), anchor="center", fg_color="lightgrey") #width=self.winfo_screenwidth()/10 *3.07, height=self.winfo_screenheight()/9 * 1.75)
         self.grey.grid(column=0, columnspan=5, row=20, rowspan=11, pady=2, padx=10, sticky="news")
 
         self.add_slice = customtkinter.CTkButton(master, text_color="black", fg_color="white", bg_color="lightgrey", hover_color="grey", text="+", corner_radius=48, font=("Trebuchet MS", 60), anchor="center", command=master.add_slices) #, width=self.winfo_screenwidth()/1 *0.01, height=self.winfo_screenheight()/10 * 0.87, command=master.add_slices)
@@ -192,16 +192,16 @@ class MainMenu(customtkinter.CTkFrame):
         self.themes = customtkinter.CTkButton(master, text_color="white", fg_color=self.theme["button"], text="Theme Select", font=("Trebuchet MS", 30), anchor="center", command=master.theme_select)
         self.themes.grid(column=20, columnspan=2, row=0, rowspan=2, pady=(10), sticky="news")
         
-        self.options = customtkinter.CTkButton(master, text_color="white", fg_color="#7986CB", text="Settings", font=("Trebuchet MS", 30), anchor="center", command=master.open_settings)
+        self.options = customtkinter.CTkButton(master, text_color=self.theme["text"], fg_color=self.theme["button"], bg_color=self.theme["bg"], text="Settings", font=("Trebuchet MS", 30), anchor="center", command=master.open_settings)
         self.options.grid(column=23, columnspan=2, row=0, rowspan=2, pady=(10), sticky="news")
 
-        self.tile = customtkinter.CTkLabel(master, text="", anchor="center", text_color="white", fg_color="lightgrey", width=self.winfo_screenwidth()/4 *2.55, height=self.winfo_screenheight()/3 * 1.45, corner_radius=35)
+        self.tile = customtkinter.CTkLabel(master, text="", anchor="center", fg_color=self.theme["tile"], bg_color=self.theme["bg"], width=self.winfo_screenwidth()/4 *2.55, height=self.winfo_screenheight()/3 * 1.45, corner_radius=35)
         self.tile.place(x=self.winfo_screenwidth()//6 *4.34, y=self.winfo_screenheight()//30 *23.75, anchor="center")
 
         self.guide = customtkinter.CTkLabel(master, text="CONTROLS:", font=("Trebuchet MS", 36), anchor="center", text_color="black", fg_color="lightgrey", bg_color="transparent", corner_radius=0)
         self.guide.place(x=self.winfo_screenwidth()//6 *3.12, y=self.winfo_screenheight()//30 *17.9, anchor="center")
 
-        self.start = customtkinter.CTkButton(master, text_color="white", fg_color="#66BB6A", bg_color="lightgrey", hover_color="green", text="START", font=("Trebuchet MS", 65), anchor="center", width=585, height=self.winfo_screenheight()/3, corner_radius=35,
+        self.start = customtkinter.CTkButton(master, text_color=self.theme["text"], fg_color="#66BB6A", bg_color="lightgrey", hover_color="green", text="START", font=("Trebuchet MS", 65), anchor="center", width=585, height=self.winfo_screenheight()/3, corner_radius=35,
         command=master.start_run)
         self.start.place(x=self.winfo_screenwidth()//6 *4.21, y=self.winfo_screenheight()//30 *24.44, anchor="center")
 
@@ -331,7 +331,7 @@ class Settings(customtkinter.CTkToplevel):
 
     def build_menu(self):
 
-        self.splash = customtkinter.CTkLabel(self, text="Settings", text_color=("white"), bg_color="#8560D1", anchor='center', fg_color="transparent", font=("Yu Mincho Demibold", 85))
+        self.splash = customtkinter.CTkLabel(self, text="Settings", text_color=self.theme["text"], bg_color=self.theme["bg"], anchor='center', font=("Yu Mincho Demibold", 85))
         self.splash.grid(column=3, columnspan=3, row=0, sticky="news")
 
         self.depth_ = customtkinter.CTkLabel(self, font=("Trebuchet MS", 30))
@@ -343,7 +343,7 @@ class Settings(customtkinter.CTkToplevel):
         self.cut_speed = customtkinter.CTkSlider(self, from_=30, to=100, number_of_steps=50, command=self.speed)
         self.cut_speed.set(SPEED)
             
-        self.back = customtkinter.CTkButton(self, text_color="white", bg_color="transparent", fg_color="#655482", hover_color="lightgrey", text="RETURN TO C.A.K.E.", font=("Trebuchet MS", 30), border_width=5, border_color="lightgrey", command=self.destroy)
+        self.back = customtkinter.CTkButton(self, text_color=self.theme["text"], fg_color=self.theme["button"], hover_color=self.theme["hover"], text="RETURN TO C.A.K.E.", font=("Trebuchet MS", 30), border_width=5, border_color=self.theme["tile"], command=self.destroy)
         self.back.grid(column=3, columnspan=3, row=12, rowspan=2, sticky="news")
 
     def depth(self, n):
@@ -369,11 +369,20 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.theme = Theme
         self.create_labels()
 
-        self.red_ = {"bg":"red", "text":"white", "button":"blue", "hover":"lightgrey", "tile":"lightgrey", "guide":"white"}
-
-        self.themes = {"red":self.red_}
+        self.red_ = {"button":"#F4511E", "button_border":"#BCAAA4", "hover":"#FF7043", "text":"#FFCCBC", "bg":"#BF360C", "tile":"lightgrey "}
+        self.orange_ = {"button":"#FF6F00", "button_border":"#BCAAA4", "hover":"#FFB300", "text":"#FFE0B2", "bg":"#F9A825", "tile":"lightgrey"}
+        self.yellow_ = {"button":"#FFEB3B", "button_border":"#BCAAA4", "hover":"#FFF59D", "text":"white", "bg":"#FFF9C4", "tile":"lightgrey"}
+        self.green_ = {"button":"#1B5E20", "button_border":"#BCAAA4", "hover":"#81C784", "text":"#E8F5E9", "bg":"#A5D6A7", "tile":"lightgrey"}
+        self.blue_ = {"button":"#00ACC1", "button_border":"#BCAAA4", "hover":"#80DEEA", "text":"#E0F7FA", "bg":"#B2EBF2", "tile":"lightgrey"}
+        self.indigo_ = {"button":"#311B92", "button_border":"#BCAAA4", "hover":"#D1C4E9", "text":"#EDE7F6", "bg":"#B39DDB", "tile":"lightgrey"}
+        self.violet_ = {"button":"#6A1B9A", "button_border":"#BCAAA4", "hover":"#BA68C8", "text":"#F3E5F5", "bg":"#CE93D8", "tile":"lightgrey"}
+        self.pink_ = {"button":"#E91E63", "button_border":"#BCAAA4", "hover":"#F06292", "text":"#FCE4EC", "bg":"#F8BBD0", "tile":"lightgrey"}
+        self.dark_ = {"button":"#616161", "button_border":"#BCAAA4", "hover":"#BDBDBD", "text":"#EEEEEE", "bg":"#000000", "tile":"lightgrey"}
+        self.light_ = {"button":"#E0E0E0", "button_border":"#BCAAA4", "hover":"#EEEEEE", "text":"#000000", "bg":"#FFFFFF", "tile":"lightgrey"}
+        
+        self.themes = {"red":self.red_, "orange":self.orange_, "yellow":self.yellow_, "green":self.green_, "blue":self.blue_, "indigo":self.indigo_, "violet":self.violet_, "pink":self.pink_, "grey":self.dark_, "white":self.light_}
         self.NAMES = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet', 'Pink', 'Dark Mode', 'Light Mode']
-        self.COLORS = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "pink", "grey", "white", "teal", "turquoise"]
+        self.COLORS = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "pink", "grey", "white"]
         self.BUTTONS = [self.red, self.orange, self.yellow, self.green, self.blue, self.indigo, self.violet, self.pink, self.dark, self.light]
         self.setup_selection(self.BUTTONS, self.COLORS, self.NAMES)
 
@@ -421,11 +430,13 @@ class ThemeSelect(customtkinter.CTkToplevel): # turn this into a theme select
         self.master.frame.bg.configure(bg_color=self.theme["bg"], text_color=self.theme["text"])
         self.master.frame.splash.configure(text_color=self.theme["text"], bg_color=self.theme["bg"], fg_color=self.theme["bg"])
         self.master.frame.diagram.configure(bg_color=self.theme["bg"])
-        self.master.frame.add_slice.configure(text_color=self.theme["text"], fg_color=self.theme["button"], bg_color=self.theme["tile"])
-        self.master.frame.remove_slice.configure(text_color=self.theme["text"], fg_color=self.theme["button"], bg_color=self.theme["tile"])
-        self.master.frame.slice_num.configure(text_color=self.theme["text"], bg_color=self.theme["tile"])
-        self.master.frame.themes.configure(fg_color=self.theme["button"], text_color=self.theme["text"])
-        self.master.frame.options.configure(text_color=self.theme["text"], fg_color=self.theme["button"])
+        self.master.frame.grey.configure(bg_color=self.theme["bg"], fg_color=self.theme["tile"])
+        self.master.frame.add_slice.configure(text_color=self.theme["text"], hover_color=self.theme["hover"], fg_color=self.theme["button"], bg_color=self.theme["tile"])
+        self.master.frame.remove_slice.configure(text_color=self.theme["text"], hover_color=self.theme["hover"], fg_color=self.theme["button"], bg_color=self.theme["tile"])
+        self.master.frame.slice_num.configure(text_color=self.theme["text"], bg_color=self.theme["bg"])
+        self.master.frame.tile.configure(bg_color=self.theme["bg"], fg_color=self.theme["tile"])
+        self.master.frame.themes.configure(hover_color=self.theme["hover"], fg_color=self.theme["button"], text_color=self.theme["text"], bg_color=self.theme["bg"])
+        self.master.frame.options.configure(hover_color=self.theme["hover"], text_color=self.theme["text"], fg_color=self.theme["button"], bg_color=self.theme["bg"])
 
         self.setup_selection(self.BUTTONS, self.COLORS, self.NAMES)
         self.destroy()
