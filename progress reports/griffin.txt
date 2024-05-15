@@ -47,3 +47,23 @@ May 02 2024
 - modeled adapter
 - printed rack
 - printed adapter
+
+May 04 2024
+- printed blade clamp
+- began final assembly
+- GUI functionality finalized
+- models were slightly adjusted to hopefully improve tolerances
+- support redesigned and reprinted
+
+May 06 2024
+- assembly and trialing continues
+- new pinion no good, new support processed to fit
+
+May 07 2024
+- assembly and trialing continues
+- final assembly, GUI hardware limits trialed and finalized
+
+May 08 2024
+- presentation
+- assembly finalized by gluing chassis to legs
+
