@@ -52,4 +52,7 @@
     - I got new motor drivers, rewired the motors, and attached a 12 volt, 5 amp coord.
     - The stepper motors now work, and we can control their speed/ number of steps
 
+5.2.24
+    - Pulled an allnighter learning more about the motors and rewiring things better
+
 The rest of the time until expo day was filled with many all-nighters and bug testing
